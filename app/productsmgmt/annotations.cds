@@ -32,6 +32,16 @@ annotate service.Products with @(
             Value : status,
             Criticality : statusCriticality,
         },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'ProductMgmtService.AddStock',
+            Label : 'Add Stock',
+        },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'ProductMgmtService.ApplyDiscount',
+            Label : 'Apply Discount',
+        },
     ],
     UI.SelectionFields: [
         ID,
