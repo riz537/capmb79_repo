@@ -42,10 +42,10 @@ module.exports = class OrderMgmtService extends cds.ApplicationService {
 
                 await UPDATE(Orders.drafts).set({netPrice:netPrice}).where({ID:order_ID});
         });
-        this.before("CREATE",Orders, async(req)=>{
+        this.before(["CREATE","UPDATE"],Orders, async(req)=>{
            const items = req.data.items || [];
            if(items.length === 0){
-              return req.error("Order can not be created without items");
+               req.error("Order can not be created without items");
            }else{
               for(const item of items){
                  // in each item take product ID , read product data from products table
@@ -54,7 +54,7 @@ module.exports = class OrderMgmtService extends cds.ApplicationService {
                  const currentStock = product.stock;
                  const orderQty = item.quantity;
                  if(currentStock<orderQty){
-                    return req.error("Insuffient Stock for the product: "+productID);
+                     req.error("Insuffient Stock for the product: "+productID);
                  }else{
                     await UPDATE(Products).set({stock:currentStock - orderQty }).where({ID:productID});
                  }

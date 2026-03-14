@@ -1,0 +1,84 @@
+<mvc:View controllerName="com.demo.storeanalytics.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout"
+    xmlns="sap.m" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.data="sap.viz.ui5.data" 
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+    <Page id="page" title="{i18n>title}">
+     <content>
+     <Text text="My Store Analytics" class="sapMH3FontSize sapUiTinyMarginTop" width="100%" textAlign="Center"></Text>
+    <l:Grid defaultSpan="XL12 L12 M12 S12" class="sapUiSmallMarginTop">
+      <FlexBox justifyContent="SpaceAround">
+        <viz:VizFrame id="StorewiseSales" vizType="donut" height="280px">
+           <viz:dataset>
+               <viz.data:FlattenedDataset data="{/StoreWiseSales}">
+                   <viz.data:dimensions>
+                      <viz.data:DimensionDefinition name="storeName" value="{storeName}"></viz.data:DimensionDefinition>
+                   </viz.data:dimensions>
+                   <viz.data:measures>
+                     <viz.data:MeasureDefinition name="totalSales" value="{totalSales}"></viz.data:MeasureDefinition>
+                   </viz.data:measures>
+               </viz.data:FlattenedDataset>
+           </viz:dataset>
+           <viz:feeds>
+              <viz.feeds:FeedItem uid="size" type="Measure" values="totalSales"></viz.feeds:FeedItem>
+               <viz.feeds:FeedItem uid="color" type="Dimension" values="storeName"></viz.feeds:FeedItem>
+           </viz:feeds>
+        </viz:VizFrame>
+
+        <!-- product wise sales -->
+         <viz:VizFrame id="ProductwiseSales" vizType="donut" height="280px">
+           <viz:dataset>
+               <viz.data:FlattenedDataset data="{/ProductWiseSales}">
+                   <viz.data:dimensions>
+                      <viz.data:DimensionDefinition name="productName" value="{productName}"></viz.data:DimensionDefinition>
+                   </viz.data:dimensions>
+                   <viz.data:measures>
+                     <viz.data:MeasureDefinition name="totalSales" value="{totalSales}"></viz.data:MeasureDefinition>
+                   </viz.data:measures>
+               </viz.data:FlattenedDataset>
+           </viz:dataset>
+           <viz:feeds>
+              <viz.feeds:FeedItem uid="size" type="Measure" values="totalSales"></viz.feeds:FeedItem>
+               <viz.feeds:FeedItem uid="color" type="Dimension" values="productName"></viz.feeds:FeedItem>
+           </viz:feeds>
+        </viz:VizFrame>
+     </FlexBox>  
+      <FlexBox justifyContent="SpaceAround">
+        <viz:VizFrame id="LowStockAlert" vizType="bar" height="280px">
+           <viz:dataset>
+               <viz.data:FlattenedDataset data="{/LowStockAlert}">
+                   <viz.data:dimensions>
+                      <viz.data:DimensionDefinition name="name" value="{name}"></viz.data:DimensionDefinition>
+                   </viz.data:dimensions>
+                   <viz.data:measures>
+                     <viz.data:MeasureDefinition name="stock" value="{stock}"></viz.data:MeasureDefinition>
+                   </viz.data:measures>
+               </viz.data:FlattenedDataset>
+           </viz:dataset>
+           <viz:feeds>
+              <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="stock"></viz.feeds:FeedItem>
+               <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="name"></viz.feeds:FeedItem>
+           </viz:feeds>
+        </viz:VizFrame>
+
+        <!-- product wise sales -->
+         <viz:VizFrame id="Top3Orders" vizType="column" height="280px">
+           <viz:dataset>
+               <viz.data:FlattenedDataset data="{/Top3Orders}">
+                   <viz.data:dimensions>
+                      <viz.data:DimensionDefinition name="ID" value="{ID}"></viz.data:DimensionDefinition>
+                   </viz.data:dimensions>
+                   <viz.data:measures>
+                     <viz.data:MeasureDefinition name="netPrice" value="{netPrice}"></viz.data:MeasureDefinition>
+                   </viz.data:measures>
+               </viz.data:FlattenedDataset>
+           </viz:dataset>
+           <viz:feeds>
+              <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="netPrice"></viz.feeds:FeedItem>
+               <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="ID"></viz.feeds:FeedItem>
+           </viz:feeds>
+        </viz:VizFrame>
+     </FlexBox>  
+    </l:Grid> 
+     </content>
+    </Page>
+</mvc:View>
