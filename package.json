@@ -24,5 +24,36 @@
   "sapux": [
     "app/productsmgmt",
     "app/ordermgmt"
-  ]
+  ],
+  "cds": {
+    "requires": {
+      "auth":{
+        "[development]":{
+          "kind": "mocked",
+          "users": {
+            "venkatesh":{
+              "password": "venkatesh",
+              "roles": ["Owner"],
+              "attr": {
+                "storeName":[
+                  "GACHIBOWLI",
+                  "KPHP",
+                  "INORBIT"
+                ]
+              }
+            },
+            "manoj":{
+              "password": "manoj",
+              "roles": ["Employee"],
+              "attr": {
+                "storeName":[
+                  "GACHIBOWLI"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

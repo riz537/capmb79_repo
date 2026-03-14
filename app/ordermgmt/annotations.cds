@@ -124,7 +124,10 @@ annotate service.Orders with @(
 annotate service.Orders with {
     ID           @Common.Label: 'Order ID';
     customerName @Common.Label: 'Custumer Name';
-    storeName    @Common.Label: 'Store Name';
+    storeName    @(
+        Common.Label: 'Store Name',
+        Common.FieldControl : #ReadOnly,
+    );
     netPrice     @(
         Common.Label: 'Net Price',
         Common.FieldControl : #ReadOnly,
