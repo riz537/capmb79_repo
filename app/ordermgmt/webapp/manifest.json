@@ -17,11 +17,23 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/odata/v4/order-mgmt/",
+        "uri": "odata/v4/order-mgmt/",
         "type": "OData",
         "settings": {
           "annotations": [],
           "odataVersion": "4.01"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "storeanalytics-display": {
+          "semanticObject": "ordermgmt",
+          "action": "manage",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
         }
       }
     }
@@ -174,5 +186,9 @@
     "app": {
       "enableLazyLoading": true
     }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "b79capmapp.service"
   }
 }

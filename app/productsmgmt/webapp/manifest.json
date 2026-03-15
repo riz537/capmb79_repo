@@ -17,11 +17,23 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/odata/v4/product-mgmt/",
+        "uri": "odata/v4/product-mgmt/",
         "type": "OData",
         "settings": {
           "annotations": [],
           "odataVersion": "4.01"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "storeanalytics-display": {
+          "semanticObject": "productsmgmt",
+          "action": "manage",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
         }
       }
     }
@@ -142,5 +154,9 @@
     "app": {
       "enableLazyLoading": true
     }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "b79capmapp.service"
   }
 }

@@ -1,0 +1,47 @@
+{
+ "xsappname": "store-management-app",
+ "tenant-mode": "dedicated",
+ "scopes": [
+  {
+   "name": "$XSAPPNAME.Owner",
+   "description": "Owner"
+  },
+  {
+   "name": "$XSAPPNAME.Employee",
+   "description": "Employee"
+  }
+ ],
+ "role-templates": [
+  {
+   "name": "Owner",
+   "description": "Full access to all store managemet applications",
+   "scope-references": [
+    "$XSAPPNAME.Owner"
+   ],
+   "attribute-references": [
+    {
+     "name": "storeName"
+    }
+   ]
+  },
+  {
+   "name": "Employee",
+   "description": "Able to create and read orders",
+   "scope-references": [
+    "$XSAPPNAME.Employee"
+   ],
+   "attribute-references": [
+    {
+     "name": "storeName"
+    }
+   ]
+  }
+ ],
+ "attributes": [
+  {
+   "name": "storeName",
+   "description": "Store Name",
+   "valueType": "string"
+  }
+ ]
+}

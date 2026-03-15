@@ -17,11 +17,23 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/odata/v4/my-store-analytics/",
+        "uri": "odata/v4/my-store-analytics/",
         "type": "OData",
         "settings": {
           "annotations": [],
           "odataVersion": "4.01"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "storeanalytics-display": {
+          "semanticObject": "storeanalytics",
+          "action": "display",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
         }
       }
     }
@@ -113,5 +125,9 @@
       "id": "App",
       "async": true
     }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "b79capmapp.service"
   }
 }
