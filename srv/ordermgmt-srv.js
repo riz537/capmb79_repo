@@ -9,7 +9,8 @@ module.exports = class OrderMgmtService extends cds.ApplicationService {
        
         // handler to fill the store name automatically based on logged in user 
         this.before('CREATE',Orders.drafts,async req=>{
-            req.data.storeName = req.user.attr.storeName[0];
+            let aStore = Array.isArray(req.user.attr.storeName)?req.user.attr.storeName:[req.user.attr.storeName];
+            req.data.storeName = aStore[0];
         });
         
         

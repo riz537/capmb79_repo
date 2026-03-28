@@ -17,11 +17,11 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "odata/v4/product-mgmt/",
+        "uri": "/odata/v4/product-mgmt/",
         "type": "OData",
         "settings": {
           "annotations": [],
-          "odataVersion": "4.01"
+          "odataVersion": "4.0"
         }
       }
     },
